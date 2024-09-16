@@ -1,0 +1,277 @@
+// Variables
+@primary-color: mix(#00a896, #5f7f8b, 87%); // Elegant teal
+@secondary-color: @nav-hover-background;
+@background-color: #ecf0f1; // Light gray background
+@text-color: #2c3e50; // Dark slate gray
+@header-background: #ffffff; // White background for header
+@footer-background: #ffffff; // White background for footer
+@nav-background: #ffffff; // White background for nav background
+@nav-text-color: @primary-color; // Nav text color
+@nav-hover-background: mix(#ff0000, #d45a5a, 25%); // Hover background for nav items
+@nav-hover-text-color: #ffffff; // Hover text color for nav items
+
+// Mixin for color
+.color(@color) {
+  color: @color;
+}
+
+// Mixin for background color
+.background(@bg-color) {
+  background-color: @bg-color;
+}
+
+// Mixin for width
+.w(@width) {
+  width: @width;
+}
+
+// Mixin for height
+.h(@height) {
+  height: @height;
+}
+
+// General Styles
+body {
+  font-family: 'Arial', sans-serif;
+  .color(@text-color);
+  .background(@background-color);
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  .w(85%);
+  margin: 0 auto;
+}
+
+// Header
+.header {
+  .background(@header-background);
+  .color(@text-color);
+  padding: 20px;
+  border-bottom: 5px solid @primary-color;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header .logo h1 {
+  margin: 0;
+  font-size: 2em;
+}
+
+.nav {
+  flex: 1;
+}
+
+.nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: right;
+  .background(@nav-background); // Background color for nav
+  border-radius: 5px;
+}
+
+.nav ul li {
+  display: inline;
+  margin-left: 20px;
+}
+
+.nav ul li a {
+  .color(@nav-text-color); // Text color for nav items
+  text-decoration: none;
+  font-size: 1.1em;
+  padding: 10px;
+  display: inline-block;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  border-radius: 5px;
+}
+
+.nav ul li a:hover {
+  .background(@nav-hover-background); // Background color on hover
+  .color(@nav-hover-text-color); // Text color on hover
+  border-radius: 5px;
+}
+
+// Main Content
+.main {
+  display: flex;
+  margin: 20px 0;
+}
+
+.aside {
+  .w(25%);
+  padding: 20px;
+  .background(#ffffff);
+  margin-right: 20px;
+  border: 1px solid #ddd;
+}
+
+.aside h3 {
+  margin-top: 0;
+}
+
+.quick-links {
+  margin-top: 20px;
+}
+
+.quick-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.quick-links ul li {
+  margin-bottom: 10px;
+}
+
+.quick-links ul li a {
+  .color(@primary-color);
+  text-decoration: none;
+  font-size: 1.1em;
+  display: block;
+  padding: 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.quick-links ul li a:hover {
+  .background(@secondary-color);
+  .color(#fff);
+}
+
+// Content
+.content {
+  .w(75%);
+}
+
+.hero {
+  .background(@primary-color);
+  .color(#fff);
+  padding: 60px 20px;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.features {
+  padding: 20px 0;
+  .background(#ffffff);
+  margin-bottom: 20px;
+}
+
+.features .feature-item {
+  margin-bottom: 20px;
+  border: 1px solid #ddd;
+  padding: 20px;
+}
+
+.blog {
+  padding: 20px 0;
+  .background(#ffffff);
+}
+
+.blog .blog-post {
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  padding: 20px;
+  border: 1px solid #ddd;
+}
+
+// Footer
+.footer {
+  .background(@footer-background);
+  .color(@text-color);
+  text-align: center;
+  padding: 20px;
+  border-top: 5px solid @primary-color;
+}
+
+.footer-nav {
+  margin-bottom: 10px;
+}
+
+.footer-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-nav ul li {
+  display: inline;
+  margin-right: 15px;
+}
+
+.footer-nav ul li a {
+  .color(@text-color);
+  text-decoration: none;
+}
+
+.footer-nav ul li a:hover {
+  text-decoration: underline;
+}
+
+.h3_outfeatures {
+  text-align: center;
+}
+
+.h3_latestblogposts {
+  text-align: center;
+}
+
+// Adaptation for smaller screens (max width: 768px)
+@media (max-width: 768px) {
+  .container {
+    .w(100%);
+    padding: 10px;
+  }
+
+  .header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .nav ul {
+    text-align: center;
+  }
+
+  .nav ul li {
+    display: block;
+    margin: 10px 0;
+  }
+
+  .main {
+    flex-direction: column;
+  }
+
+  .aside, .content {
+    .w(100%);
+    margin: 0;
+  }
+
+  .features, .blog, .footer {
+    padding: 10px;
+  }
+}
+
+// Adaptation for very small screens (max width: 480px)
+@media (max-width: 480px) {
+  .header .logo h1 {
+    font-size: 1.5em;
+  }
+
+  .nav ul li a {
+    font-size: 1em;
+    padding: 8px;
+  }
+
+  .hero {
+    padding: 40px 10px;
+    font-size: 1.2em;
+  }
+
+  .features .feature-item, .blog .blog-post {
+    padding: 10px;
+  }
+}
